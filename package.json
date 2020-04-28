@@ -1,0 +1,38 @@
+{
+  "name": "music-bot-example",
+  "version": "1.0.0",
+  "description": "Example of a Music Bot project modified by Zealcord, made by DevYukine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zealcordNation/music-bot-example.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "DiscordJS",
+    "NodeJS",
+    "Discord",
+    "Zealcord"
+  ],
+  "author": "HiloIndo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HiloIndo/bot-discord-simple/issues"
+  },
+  "homepage": "https://github.com/HiloIndo/bot-discord-simple/issues",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "express": "^4.17.1",
+    "node-opus": "^0.3.3",
+    "simple-youtube-api": "^5.2.1",
+    "ytdl-core": "^2.1.1",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
+    "canvas": "^2.6.1",
+    "fs": "^0.0.2"
+  }
+}
