@@ -1,7 +1,7 @@
 # Hai Thanks For Use My Project
 Actually, I Choose ZealcordNation, But I Will Put It So Not Copyright
 
-Bot Discord Simple project modified by HiloIndo, By HiloIndo
+Bot Discord Simple project modified by HiloIndo
 
 # Video Tutorial
 
