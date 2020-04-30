@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { Client, Util } = require("discord.js");
-const { TOKEN, PREFIX, GOOGLE_API_KEY } = require("./config");
+const { TOKEN, PREFIX, GOOGLE_API_KEY, INSTAGRAM,  ID, AUTHOR} = require("./config");
 const YouTube = require("simple-youtube-api");
 const ytdl = require("ytdl-core");
 const bot = new Client({ disableEveryone: true });
@@ -10,9 +10,6 @@ require("./server.js");
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
 const client = new Discord.Client();
-const author = '';
-const id = '';
-const instagram = '';
 const create = `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`;
 
 
@@ -437,7 +434,7 @@ bot.on("message", function(message) {
   }
 
   if (command === "restart" || command === "r") {
-    if (message.author.id !== `${id}`)
+    if (message.author.id !== `${ID}`)
       return message.channel.send("You Not Owner");
     let embed = new Discord.RichEmbed()
       .setColor("#7289DA")
