@@ -677,7 +677,7 @@ bot.on("message", async msg => {
       .setColor("#7289DA")
       .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
       .setDescription(
-        "__**AUTHOR : " + AUTHOR + "**__\n__**UPTIME : " + uptime + "**__\n__**CREATE : " + create + "**__\n__**PREFIX : " + PREFIX + "**__\n\n__**MUSIK**__ \n``play, skip, stop, pause, volume [1/100], nowplaying, queue, join, leave``\n\n__**ADMIN**__\n``ban, kick, warn``\n\n__**GENERAL**__\n``say, avatar, profile, avatarguild``\n\n__**UTILITY**__\n``ping, server``\n\n__**LEVELS**__\n``level``\n\n__**OWNER**__\n``restart, bot``\n\n__**Tutorial Create Bots**__\n``tutorialbot``\n\n__**CONTACT**__\n`Discord : " + AUTHOR + "\nIG : " + INSTAGRAM + "\nIF THERE IS AN ERROR CONTACT THE OWNER / WRITER!`")
+        "__**AUTHOR : " + AUTHOR + "**__\n__**UPTIME : " + uptime + "**__\n__**CREATE : " + create + "**__\n__**PREFIX : " + PREFIX + "**__\n\n__**MUSIK**__ \n``play, skip, stop, pause, volume [1/100], nowplaying, queue, join, leave``\n\n__**ADMIN**__\n``warn, kick, ban``\n\n__**GENERAL**__\n``say, avatar, profile, avatarguild``\n\n__**UTILITY**__\n``ping, server, stats``\n\n__**LEVELS**__\n``level``\n\n__**OWNER**__\n``restart``\n\n__**Tutorial Create Bots**__\n``tutorialbot``\n\n__**CONTACT**__\n`Discord : " + AUTHOR + "\nIG : " + INSTAGRAM + "\nIF THERE IS AN ERROR CONTACT THE OWNER / WRITER!`")
       .setTimestamp()
       .setFooter(
         `Message From : ${msg.author.username}#${msg.author.discriminator}`,
