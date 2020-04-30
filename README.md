@@ -15,6 +15,10 @@ Bot Discord Simple project modified by HiloIndo, By HiloIndo
 
 > Video [Tutorial](https://youtu.be/3jZ5vnv-LZc?t=7)
 
+# Project First
+
+> Link [Project](https://github.com/HiloIndo/bot-discord-simple)
+
 ## Author
 
 > Github [iCrawl](https://github.com/iCrawl)
