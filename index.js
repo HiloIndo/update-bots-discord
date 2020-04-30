@@ -10,7 +10,7 @@ require("./server.js");
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
 const client = new Discord.Client();
-const create = `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`;
+const create = moment.utc(bot.createdAt).format("dddd, MMMM Do YYYY");
 
 
 ////////////////////////////////////////////////////CLIENT////////////////////////////////////////////////////////////////////
@@ -425,7 +425,7 @@ bot.on("message", function(message) {
       .setColor("#7289DA")
       .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
       .setDescription(
-        "```Uptime  : " + uptime + "\nMemory  : " + Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + "Mb\nCPU     : " + cpupercent + "\nLibrary : discord.js\nServer  : " + bot.guilds.size + "\nUsers   : " + bot.users.size + "```\n__**⚙️Developer⚙️**__\n•" + author +  "•")
+        "```Uptime  : " + uptime + "\nMemory  : " + Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + "Mb\nCPU     : " + cpupercent + "\nLibrary : discord.js\nServer  : " + bot.guilds.size + "\nUsers   : " + bot.users.size + "```\n__**⚙️Developer⚙️**__\n•" + AUTHOR +  "•")
       .setTimestamp()
       .setFooter(
         `Pesan Dari : ${message.author.username}#${message.author.discriminator}`, message.author.displayAvatarURL);
@@ -520,7 +520,7 @@ bot.on("message", async msg => {
       .setColor("#7289DA")
       .setThumbnail(msg.guild.iconURL)
       .setAuthor(msg.guild.name)
-      .addField("Ping", `${Date.now() - msg.createdTimestamp} MS`)
+      .addField("Ping", (botMsg.createdAt - message.createdAt) + "ms`")
       .addField("Member Count", `${msg.guild.memberCount} MEMBER`, true)
       .addField("Guild Count", `${bot.guilds.size} SERVER`, true)
       .addField(
@@ -677,7 +677,7 @@ bot.on("message", async msg => {
       .setColor("#7289DA")
       .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
       .setDescription(
-        "__**AUTHOR : " + author + "**__\n__**UPTIME : " + uptime + "**__\n__**CREATE : " + create + "**__\n__**PREFIX : " + PREFIX + "**__\n\n__**MUSIK**__ \n``play, skip, stop, pause, volume [1/100], nowplaying, queue, join, leave``\n\n__**ADMIN**__\n``ban, kick, warn``\n\n__**GENERAL**__\n``say, avatar, profile, avatarguild``\n\n__**UTILITY**__\n``ping, server``\n\n__**LEVELS**__\n``level``\n\n__**OWNER**__\n``restart, bot``\n\n__**Tutorial Create Bots**__\n``tutorialbot``\n\n__**CONTACT**__\n`Discord : " + author + "\nIG : " + instagram + "\nIF THERE IS AN ERROR CONTACT THE OWNER / WRITER!`")
+        "__**AUTHOR : " + AUTHOR + "**__\n__**UPTIME : " + uptime + "**__\n__**CREATE : " + create + "**__\n__**PREFIX : " + PREFIX + "**__\n\n__**MUSIK**__ \n``play, skip, stop, pause, volume [1/100], nowplaying, queue, join, leave``\n\n__**ADMIN**__\n``ban, kick, warn``\n\n__**GENERAL**__\n``say, avatar, profile, avatarguild``\n\n__**UTILITY**__\n``ping, server``\n\n__**LEVELS**__\n``level``\n\n__**OWNER**__\n``restart, bot``\n\n__**Tutorial Create Bots**__\n``tutorialbot``\n\n__**CONTACT**__\n`Discord : " + AUTHOR + "\nIG : " + INSTAGRAM + "\nIF THERE IS AN ERROR CONTACT THE OWNER / WRITER!`")
       .setTimestamp()
       .setFooter(
         `Message From : ${msg.author.username}#${msg.author.discriminator}`,

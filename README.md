@@ -1,7 +1,7 @@
 # Hai Thanks For Use My Project
 Actually, I Choose ZealcordNation, But I Will Put It So Not Copyright
 
-Bot Discord Simple project modified by HiloIndo
+Bot Discord Simple project modified by HiloIndo, By HiloIndo
 
 # Video Tutorial
 
@@ -14,10 +14,6 @@ Bot Discord Simple project modified by HiloIndo
 # Tutorial Get Api Key YouTube
 
 > Video [Tutorial](https://youtu.be/3jZ5vnv-LZc?t=7)
-
-# Firts Project
-
-> Enter This First [Project Firts](https://github.com/HiloIndo/bot-discord-simple)
 
 ## Author
 
