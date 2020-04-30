@@ -240,7 +240,7 @@ function randomStatus() {
   let status = [
     `${bot.users.size} Users`,
     `${bot.guilds.size} Server`,
-    `Author : ${author}`,
+    `Author : ${AUTHOR}`,
     `DATE : ${time4}`,
     `IND : ${jamWIB}`,
   ];
@@ -360,33 +360,6 @@ bot.on("reconnecting", () => console.log("I am reconnecting now..."));
 
 bot.on("ready", function() {
   console.log(`${bot.user.tag} READY!`);
-  
-  function kalender() {
-    var date = moment(Date.now()).utcOffset("+0700").format("Do - MMMM - YYYY");
-    var WIB = moment(Date.now()).utcOffset("+0700").format("LT");
-    var WITA = moment(Date.now()).utcOffset("+0800").format("LT");
-    var WIT = moment(Date.now()).utcOffset("+0900").format("LT")
-    var day = moment(Date.now()).utcOffset("+0700").format('dddd');
-    
-    //enter the guild / server id
-    let Guild = bot.guilds.get("")
-    
-    //input voice id
-    let voicedate = Guild.channels.get("")
-    let voicewib = Guild.channels.get("")
-    let voicewita = Guild.channels.get("")
-    let voicewit = Guild.channels.get("")
-    let voiceday = Guild.channels.get("")
-    
-    //enter the name according to taste
-    voicewib.setName(`╭⏰★。ͅ-ֵ┃WIB ` + jamWIB);
-    voicewita.setName(`│⏰★。ͅ-ֵ┃WITA ` + jamWITA);
-    voicewit.setName(`│⏰★。ͅ-ֵ┃WIT ` + jamWIT);
-    voicedate.setName(`│📆★。ͅ-ֵ┃` + day);
-    voicedate.setName(`╰📆★。ͅ-ֵ┃` + tanggal);
-    
-    }
-    setInterval(kalender, 10000);
 });
 
 bot.on("message", function(message) {
