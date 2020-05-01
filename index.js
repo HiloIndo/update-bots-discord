@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const { Client, Util } = require("discord.js");
-const { TOKEN, PREFIX, GOOGLE_API_KEY, INSTAGRAM,  ID, AUTHOR} = require("./config");
+const { TOKEN, PREFIX, GOOGLE_API_KEY, INSTAGRAM,  ID, AUTHOR, COLOR, LEVEL, create} = require("./config");
 const YouTube = require("simple-youtube-api");
 const ytdl = require("ytdl-core");
 const bot = new Client({ disableEveryone: true });
@@ -10,7 +10,7 @@ require("./server.js");
 const youtube = new YouTube(GOOGLE_API_KEY);
 const queue = new Map();
 const client = new Discord.Client();
-const create = moment.utc(bot.createdAt).format("dddd, MMMM Do YYYY");
+
 
 
 ////////////////////////////////////////////////////CLIENT////////////////////////////////////////////////////////////////////
@@ -34,11 +34,11 @@ client.on("message", message => {
         userInfo.level++
         userInfo.xp = 0
       let embed = new Discord.RichEmbed()
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setTitle("Congratulation")
       .setDescription("You Level Up!! `" + userInfo.level + "`" )
-        message.reply(embed).then(message => {
-            message.delete();
+        message.channel.send(embed).then(message => {
+            message.delete(LEVEL);
         })
     }
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -48,7 +48,7 @@ client.on("message", message => {
         let member = message.mentions.users.first() || message.author;
         let embed = new Discord.RichEmbed()
         .setThumbnail(message.author.displayAvatarURL)
-        .setColor(0x4286f4)
+        .setColor(COLOR)
         .setTitle(`${member.username}`)
         .addField("Level :", userInfo.level)
         .addField("XP :", userInfo.xp+"/100")
@@ -58,7 +58,7 @@ client.on("message", message => {
         let memberInfo = db[member.id]
         let embed2 = new Discord.RichEmbed()
         .setThumbnail(message.author.displayAvatarURL)
-        .setColor(0x4286f4)
+        .setColor(COLOR)
         .setTitle(`${member.username}`)
         .addField("Level :", memberInfo.level)
         .addField("XP :", memberInfo.xp+"/100")
@@ -129,7 +129,7 @@ let user = msg.mentions.users.first() || msg.author;
   let reason = args.slice(1).join(' ');
   if(!reason) reason = "No Reason";
 let embed = new Discord.RichEmbed(reason)
-.setColor("BLUE")
+.setColor(COLOR)
 .setTitle("WARN MEMBER")
 .setDescription(` 
 ================================
@@ -181,7 +181,7 @@ let embed = new Discord.RichEmbed(reason)
           .kick('-----')
           .then(() => {
             msg.reply({embed: {
-  color: 3447003,
+  color: COLOR,
   description: `"${user.username}" Good Bye :)`
 }});
           })
@@ -395,7 +395,7 @@ bot.on("message", function(message) {
 
     let embed = new Discord.RichEmbed()
       .setThumbnail(bot.user.displayAvatarURL)
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
       .setDescription(
         "```Uptime  : " + uptime + "\nMemory  : " + Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + "Mb\nCPU     : " + cpupercent + "\nLibrary : discord.js\nServer  : " + bot.guilds.size + "\nUsers   : " + bot.users.size + "```\n__**⚙️Developer⚙️**__\n•" + AUTHOR +  "•")
@@ -410,7 +410,7 @@ bot.on("message", function(message) {
     if (message.author.id !== `${ID}`)
       return message.channel.send("You Not Owner");
     let embed = new Discord.RichEmbed()
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setDescription("Reboot!");
     message.channel.send(embed).then(() => {
       message.delete(10000)
@@ -438,7 +438,7 @@ bot.on("message", async msg => {
     const embed = new Discord.RichEmbed()
     .setTitle("Klick Link")
     .setDescription("[Video Tutorial Music Bot By Zealcord Nation](https://www.youtube.com/watch?v=ZL7rC0xiV9c)")
-    .setColor("#7289DA")
+    .setColor(COLOR)
     .setTimestamp()
     .setFooter(`Pesan Dari : ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL);
     msg.channel.send(embed);
@@ -454,7 +454,7 @@ bot.on("message", async msg => {
     if (!deleteCount || deleteCount < 2 || deleteCount > 100)
       return msg.reply({
         embed: {
-          color: 3447003,
+          color: COLOR,
           description: "Pesan Yang Harus Dihapus Min 2 Max 100...",
           timestamp: new Date(),
               footer: {
@@ -490,10 +490,9 @@ bot.on("message", async msg => {
   if (command === "server") {
     
     const exampleEmbed = new Discord.RichEmbed()
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setThumbnail(msg.guild.iconURL)
       .setAuthor(msg.guild.name)
-      .addField("Ping", (botMsg.createdAt - message.createdAt) + "ms`")
       .addField("Member Count", `${msg.guild.memberCount} MEMBER`, true)
       .addField("Guild Count", `${bot.guilds.size} SERVER`, true)
       .addField(
@@ -528,7 +527,7 @@ bot.on("message", async msg => {
       user = member.user;
     let embed = new Discord.RichEmbed()
       .setAuthor("Profile")
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setThumbnail(msg.author.displayAvatarURL)
       .addField(
         "Username",
@@ -622,7 +621,7 @@ bot.on("message", async msg => {
     let users = msg.mentions.users.first() || msg.author;
     let embed = new Discord.RichEmbed()
       .setAuthor(users.username)
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setTimestamp()
       .setImage(users.avatarURL)
       .setFooter(
@@ -647,7 +646,7 @@ bot.on("message", async msg => {
     
     const helpembed = new Discord.RichEmbed()
     .setThumbnail(bot.user.displayAvatarURL)
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
       .setDescription(
         "__**AUTHOR : " + AUTHOR + "**__\n__**UPTIME : " + uptime + "**__\n__**CREATE : " + create + "**__\n__**PREFIX : " + PREFIX + "**__\n\n__**MUSIK**__ \n``play, skip, stop, pause, volume [1/100], nowplaying, queue, join, leave``\n\n__**ADMIN**__\n``warn, kick, ban``\n\n__**GENERAL**__\n``say, avatar, profile, avatarguild``\n\n__**UTILITY**__\n``ping, server, stats``\n\n__**LEVELS**__\n``level``\n\n__**OWNER**__\n``restart``\n\n__**Tutorial Create Bots**__\n``tutorialbot``\n\n__**CONTACT**__\n`Discord : " + AUTHOR + "\nIG : " + INSTAGRAM + "\nIF THERE IS AN ERROR CONTACT THE OWNER / WRITER!`")
@@ -665,7 +664,7 @@ bot.on("message", async msg => {
     if (!voiceChannel)
       return msg.channel.send("You Join Your Voice")
     let embed = new Discord.RichEmbed()
-    .setColor("7289DA")
+    .setColor(COLOR)
     .setDescription("```🙋 Done Join Your Voice ```")
     .setTimestamp()
     .setFooter(`Pesan Dari : ${msg.author.username}#${msg.author.discriminator}`, bot.user.displayAvatarURL);
@@ -679,7 +678,7 @@ bot.on("message", async msg => {
     if (!voiceChannel)
       return msg.channel.send("You Not Join Voice")
     let embed = new Discord.RichEmbed()
-    .setColor("7289DA")
+    .setColor(COLOR)
     .setDescription("```🙋 Done Leave Your Voice ```")
     .setTimestamp()
     .setFooter(`Pesan Dari : ${msg.author.username}#${msg.author.discriminator}`, bot.user.displayAvatarURL);
@@ -714,7 +713,7 @@ bot.on("message", async msg => {
         await handleVideo(video2, msg, voiceChannel, true); // eslint-disable-line no-await-in-loop
       }
       let embed = new Discord.RichEmbed()
-      .setColor("7289DA")
+      .setColor(COLOR)
     .setDescription("`Playlist " + playlist.title + " Success Add In List`")
     .setTimestamp()
       return msg.channel.send(embed);
@@ -728,7 +727,7 @@ bot.on("message", async msg => {
           const embed1 = new Discord.RichEmbed()
             .setTitle("Select Music")
             .setDescription(`${videos.map(video2 => `${++index}. ${video2.title}`).join("\n")}\n**Select 1 - 10 Never Use a Prefix!** ` )
-            .setColor("#7289DA")
+            .setColor(COLOR)
           .setFooter("Sorry if the music stops suddenly")
           msg.channel.sendEmbed(embed1).then(message => {
             message.delete(20000);
@@ -773,7 +772,7 @@ bot.on("message", async msg => {
       );
     serverQueue.connection.dispatcher.end("Perintah skip telah digunakan!");
     let embed = new Discord.RichEmbed()
-    .setColor("7289DA")
+    .setColor(COLOR)
     .setDescription("```⏭️ Next Songs```")
     .setTimestamp()
     msg.channel.sendEmbed(embed);
@@ -790,7 +789,7 @@ bot.on("message", async msg => {
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end("Perintah berhenti telah digunakan!");
     let embed = new Discord.RichEmbed()
-    .setColor("7289DA")
+    .setColor(COLOR)
     .setDescription("```⏹️ Music Stop ```")
     .setTimestamp()
     .setFooter(`Pesan Dari : ${msg.author.username}#${msg.author.discriminator}`, bot.user.displayAvatarURL);
@@ -809,7 +808,7 @@ bot.on("message", async msg => {
     serverQueue.volume = args[1];
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 200);
     let embed = new Discord.RichEmbed()
-      .setColor("7289DA")
+      .setColor(COLOR)
       .setDescription("```Volume Set : " + args[1] + "```")
       .setTimestamp()
     .setFooter(`Message From : ${msg.author.username}#${msg.author.discriminator}`, msg.author.displayAvatarURL);
@@ -818,7 +817,7 @@ bot.on("message", async msg => {
   } else if (command === "nowplaying" || command === "np") {
     if (!serverQueue) return msg.channel.send("There is no song where you can see the song playing");
     const embedNP = new Discord.RichEmbed()
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setDescription(
         `__**Now Playing**__\n( [${serverQueue.songs[0].title}](${serverQueue.songs[0].url}) )`
 );
@@ -844,17 +843,17 @@ bot.on("message", async msg => {
           " )"
       )
     .setTimestamp()
-      .setColor("#7289DA")
+      .setColor(COLOR)
     .setFooter(`Message From : ${msg.author.username}#${msg.author.discriminator}`, bot.user.displayAvatarURL);
     return msg.channel.sendEmbed(embedqu);
   }
   else if (command === "loop") {
     const loop = new Discord.RichEmbed()
   .setDescription("🔁 **Enable**")
-  .setColor("#7289DA")
+  .setColor(COLOR)
   const unloop = new Discord.RichEmbed()
   .setDescription("🔁 **Disable**")
-  .setColor("#7289DA")
+  .setColor(COLOR)
   serverQueue.loop = !serverQueue.loop;
   if(serverQueue.loop) return msg.channel.send(loop)
   return msg.channel.send(unloop)
@@ -864,7 +863,7 @@ bot.on("message", async msg => {
       serverQueue.playing = false;
       serverQueue.connection.dispatcher.pause();
       let embed = new Discord.RichEmbed()
-    .setColor("7289DA")
+    .setColor(COLOR)
     .setDescription("```⏯️ Music Pause ```")
     .setTimestamp()
     .setFooter(`Message From : ${msg.author.username}#${msg.author.discriminator}`, bot.user.displayAvatarURL);
@@ -877,7 +876,7 @@ bot.on("message", async msg => {
       serverQueue.playing = true;
       serverQueue.connection.dispatcher.resume();
       let embed = new Discord.RichEmbed()
-    .setColor("7289DA")
+    .setColor(COLOR)
     .setDescription("```⏯️ Music is playing again```")
     .setTimestamp()
     .setFooter(`Pesan Dari : ${msg.author.username}#${msg.author.discriminator}`, bot.user.displayAvatarURL);
@@ -925,7 +924,7 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
     console.log(serverQueue.songs);
     if (playlist) return undefined;
     let embed = new Discord.RichEmbed()
-      .setColor("#7289DA")
+      .setColor(COLOR)
       .setDescription(
         "( [" +
           song.title +
@@ -961,7 +960,7 @@ function play(guild, song) {
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 100);
 
   let embed = new Discord.RichEmbed()
-    .setColor("#7289DA")
+    .setColor(COLOR)
     .setTitle("Start playing")
     .setDescription("( " + `[${serverQueue.songs[0].title}](${serverQueue.songs[0].url}) )`)
   .setFooter("Sorry if the music stops suddenly")
