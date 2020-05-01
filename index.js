@@ -557,7 +557,7 @@ bot.on("message", async msg => {
 
   if (command === "say") {
     let saymsg = msg.content;
-    msg.channel.send(saymsg.replace("!!!say", ""));
+    msg.channel.send(saymsg.replace(`${PREFIX}say`, ""));
     msg.delete(1);
   }
 
