@@ -892,7 +892,12 @@ async function handleVideo(video, msg, voiceChannel, playlist = false) {
   const song = {
     id: video.id,
     title: Util.escapeMarkdown(video.title),
-    url: `https://www.youtube.com/watch?v=${video.id}`
+    url: `https://www.youtube.com/watch?v=${video.id}`,
+    channel: video.channel.title,
+    durationm: video.duration.minutes,
+    durations: video.duration.seconds,
+    durationh: video.duration.hours,
+    publishedAt: video.publishedAt,
   };
 
   if (!serverQueue) {
@@ -959,11 +964,16 @@ function play(guild, song) {
     .on("error", error => console.error(error));
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 100);
 
-  let embed = new Discord.RichEmbed()
+  let playingemb = new Discord.RichEmbed()
+    .setTitle(`**Now Playing!** 🎶`)
     .setColor(COLOR)
-    .setTitle("Start playing")
-    .setDescription("( " + `[${serverQueue.songs[0].title}](${serverQueue.songs[0].url}) )`)
-  .setFooter("Sorry if the music stops suddenly")
-  serverQueue.textChannel.send(embed);
+    .addField(`**Uploader**`, `${song.channel}`, true)
+    .addField(`**Video ID**`, song.id , true)
+    .setFooter(`Published » ${song.publishedAt}`)
+    .addField(`**Duration**`, `**\`${song.durationh}\`** Hours, **\`${song.durationm}\`** Minutes and **\`${song.durations}\`** Seconds`, true)
+    .setThumbnail(`https://i.ytimg.com/vi/${song.id}/sddefault.jpg`)
+    .setDescription(`[${song.title}](https://www.youtube.com/watch?v=${song.id})`)
+
+    serverQueue.textChannel.send(playingemb);
 }
 bot.login(TOKEN);
